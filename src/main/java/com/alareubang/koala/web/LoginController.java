@@ -37,8 +37,6 @@ public class LoginController {
 	
 	@PostMapping("/auth/join")
     public String join(User user){
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
         String rawPassword = user.getPassword();
         String encPassword = passwordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
