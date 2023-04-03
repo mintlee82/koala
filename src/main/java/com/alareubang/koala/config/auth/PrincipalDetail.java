@@ -25,15 +25,11 @@ public class PrincipalDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-    	String password = user.getPassword();
-    	System.out.println("password : " + password);
         return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-    	String username = user.getUsername();
-    	System.out.println("username : " + username);
         return user.getUsername();
     }
 
