@@ -2,6 +2,7 @@ package com.alareubang.koala.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +27,14 @@ public class LoginController {
 	}
 	
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Authentication authentication, Model model) {
+		String username = authentication.getName();
+		model.addAttribute("pageTitle", "아꼬와 심쿵이의 아빠입니다.");
+		model.addAttribute("welcomeMessage", "어서오세요! 알라월드");
+		model.addAttribute("username", username);
 		return "/index";
 	}
-	
+		
 	@GetMapping("/auth/joinForm")
     public String joinForm(){
         return "/auth/joinForm";

@@ -1,0 +1,5 @@
+<ul th:fragment="menu">
+    <li th:each="menuItem : ${menuItems}">
+        <a th:href="${menuItem.url}" th:text="${menuItem.label}"></a>
+    </li>
+</ul>

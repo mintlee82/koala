@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8">
-<title>메인 페이지</title>
+	<meta charset="UTF-8">
+	<title>알라르방의 끄적끄적</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body onload="weatherDataReceive()">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="/js/weatherDataReceiveAjax.js"></script>
+    <!-- Header section -->
+    <header>
+        <!-- Header content goes here -->
+	    <h1 th:text="${pageTitle}"></h1>
+    </header>
+
+    <!-- Main content section -->
+    <main>	
+	    <!-- Sidebar section -->
+	    <nav th:replace="menu :: menu"></nav>
+        <!-- Main content goes here -->    
+        <section>
+            <!-- Section content goes here -->
+	        <!-- Display data dynamically using Thymeleaf expressions -->	        
+	        <p th:text="${welcomeMessage}"></p>
+	        <!-- Render a list of items dynamically using Thymeleaf expressions -->
+	        <ul>
+	            <li th:each="item : ${items}" th:text="${item}"></li>
+	        </ul>
+	        
+	        <p>Welcome, <span th:text="${username}"></span>!</p>
+	        <form class="logout-form" th:action="@{/logout}" method="post">
+	            <button type="submit" class="logout-button">로그아웃</button>
+	        </form>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <!-- Footer content goes here -->
+	    <h1 th:text="푸터영역입니다."></h1>
+    </footer>
 </body>
 </html>

@@ -1,10 +1,10 @@
 function weatherDataReceive() {
 	let nowDt = new Date();
-	let nowTm = nowDt.getHours()+'00';
+	let nowTm = pad(nowDt.getHours())+'00';
 	nowDt.setHours(nowDt.getHours() - 1);
 	let baseDt = nowDt.getFullYear()+pad(nowDt.getMonth()+1)+pad(nowDt.getDate());
-	let baseTm = nowDt.getHours()+'30';
-
+	let baseTm = pad(nowDt.getHours())+'30';
+	
     var messageDTO={
         serviceKey:"q6DZDzbe0BITlR5wUcAmeUMtLO0MUV39ROlCBqxg1LhCwMPLKU/sBPgFpSfwv4js+OyFBsyjPKT0/wPfjPtmTg=="
        ,dataType:"JSON"
@@ -16,7 +16,7 @@ function weatherDataReceive() {
     };
 
     $.ajax({
-        url: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst",
+        url: "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst",
         data: messageDTO,
         type:"GET",
         dataType:"JSON"
